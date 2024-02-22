@@ -2,7 +2,7 @@ const router = require('express').Router();
 const store = require('../db/store');
 
 // GET "/api/notes" responds with all notes from the database
-router.get('/api/notes', (req, res) => {
+router.get('/notes', (req, res) => {
     store
         .getNotes()
         .then(notes => res.json(notes))
@@ -10,7 +10,7 @@ router.get('/api/notes', (req, res) => {
 });
 
 // POST "/api/notes" adds a new note to the database
-router.post('/api/notes', (req, res) => {
+router.post('/notes', (req, res) => {
     store
         .addNote(req.body)
         .then(note => res.json(note))
