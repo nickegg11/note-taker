@@ -5,7 +5,9 @@ const store = require('../db/store');
 router.get('/notes', (req, res) => {
     store
         .getNotes()
-        .then(notes => res.json(notes))
+        .then((notes) => {
+            return res.json(notes);
+        })
         .catch(err => res.status(500).json(err));
 });
 
@@ -18,7 +20,7 @@ router.post('/notes', (req, res) => {
 });
 
 // DELETE "/api/notes/:id" deletes the note with the given id from the database
-router.delete('/api/notes/:id', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
     store
         .removeNote(req.params.id)
         .then(() => res.json({ ok: true }))
